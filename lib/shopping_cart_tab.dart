@@ -159,6 +159,11 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: _buildLocationField(),
             );
+          case 3:
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+              child: _buildDateAndTimePicker(context),
+            );
           default:
           // Do nothing. For now.
         }
