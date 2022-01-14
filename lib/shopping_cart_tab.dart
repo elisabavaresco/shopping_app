@@ -96,6 +96,49 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
     );
   }
 
+  Widget _buildDateAndTimePicker(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: const <Widget>[
+                Icon(
+                  CupertinoIcons.clock,
+                  color: CupertinoColors.lightBackgroundGray,
+                  size: 28,
+                ),
+                SizedBox(width: 6),
+                Text(
+                  'Delivery time',
+                  style: Styles.deliveryTimeLabel,
+                ),
+              ],
+            ),
+            Text(
+              DateFormat.yMMMd().add_jm().format(dateTime),
+              style: Styles.deliveryTime,
+            ),
+          ],
+        ),
+        SizedBox(
+          height: _kDateTimePickerHeight,
+          child: CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.dateAndTime,
+            initialDateTime: dateTime,
+            onDateTimeChanged: (newDateTime) {
+              setState(() {
+                dateTime = newDateTime;
+              });
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
   SliverChildBuilderDelegate _buildSliverChildBuilderDelegate(
       AppStateModel model) {
     return SliverChildBuilderDelegate(
