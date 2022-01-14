@@ -17,3 +17,17 @@ class CupertinoStoreApp extends StatelessWidget {
     );
   }
 }
+
+class CupertinoStoreHomePage extends StatelessWidget {
+  const CupertinoStoreHomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text('Cupertino Store'),
+      ),
+      child: SizedBox(),
+    );
+  }
+}
