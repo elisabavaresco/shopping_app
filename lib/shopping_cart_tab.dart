@@ -145,6 +145,7 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
       AppStateModel model) {
     return SliverChildBuilderDelegate(
           (context, index) {
+            final productIndex = index - 4;
         switch (index) {
           case 0:
             return Padding(
