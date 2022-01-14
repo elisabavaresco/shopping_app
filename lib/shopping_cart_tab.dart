@@ -23,6 +23,7 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
   String? location;
   String? pin;
   DateTime dateTime = DateTime.now();
+  final _currencyFormat = NumberFormat.currency(symbol: '\$');
 
   Widget _buildNameField() {
     return CupertinoTextField(
