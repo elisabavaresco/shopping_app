@@ -124,11 +124,18 @@ class _ShoppingCartTabState extends State<ShoppingCartTab> {
   Widget build(BuildContext context) {
     return Consumer<AppStateModel>(
       builder: (context, model, child) {
-        return const CustomScrollView(
+        return CustomScrollView(
           slivers: <Widget>[
-            CupertinoSliverNavigationBar(
+            const CupertinoSliverNavigationBar(
               largeTitle: Text('Shopping Cart'),
             ),
+            SliverSafeArea(
+              top: false,
+              minimum: const EdgeInsets.only(top: 4),
+              sliver: SliverList(
+                delegate: _buildSliverChildBuilderDelegate(model),
+              ),
+            )
           ],
         );
       },
