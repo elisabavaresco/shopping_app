@@ -19,6 +19,40 @@ class _SearchTabState extends State<SearchTab> {
 
   @override
   Widget build(BuildContext context) {
+    late final TextEditingController _controller;
+    late final FocusNode _focusNode;
+    String _terms = '';
+
+    @override
+    void initState() {
+      super.initState();
+      _controller = TextEditingController()..addListener(_onTextChanged);
+      _focusNode = FocusNode();
+    }
+
+    @override
+    void dispose() {
+      _focusNode.dispose();
+      _controller.dispose();
+      super.dispose();
+    }
+
+    void _onTextChanged() {
+      setState(() {
+        _terms = _controller.text;
+      });
+    }
+
+    Widget _buildSearchBox() {
+      return Padding(
+        padding: const EdgeInsets.all(8),
+        child: SearchBar(
+          controller: _controller,
+          focusNode: _focusNode,
+        ),
+      );
+    }
+
     final model = Provider.of<AppStateModel>(context);
     final results = model.search(_terms);
 
